@@ -1,0 +1,92 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf340
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww28600\viewh15380\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 \
+1  Wolf Breath Direction & Power\
+	a) handle power bar: In this section, a user can single tap the power bar at the left of the wolf, with higher position, the power is larger by increasing the velocity of the blow.\
+	b) handle direction arrow: A user can pan the arrow and make the arrow rotate to get the desired direction he wants before blowing.\
+	c) after a user set his direction and power, he can single tap the wolf and the wolf will projectile the air.\
+	d) The operations above is as simple as possible. Hence the user won't have to spend too much time on learning how to play this game.   \
+\
+2a)   Handle Circle: Wolf Breath\
+	a) handle the projectile: the circle is similar to the rectangle. I only make sure that the circle has the same rotation with the object that will collide with it.\
+	b) reason of a): first, I don't need to consider too much about a new shape. It's quite easy for me, since I only need to change a small amount of codes in the collision part.\
+			    second, the effect of doing this is quite good, hard to tell the projectile is a circle of rectangle in the game.\
+ \
+3. \
+	1)How to implement different collision\
+	In this game, every object has a HP (Heathy Point), including the projectile. \
+	Hence, a projectile can be stopped when 1) its HP becomes ZERO, for example, it collides with an iron or stone block, or two straw blocks\
+							  2) After the projectile collides with the ground, it will disappear automatically.\
+							 3) since different object also has different mass, the effect of collision will also be different.\
+							4) a projectile may not kill a pig if its HP, also means power here, is decreased by other objects.\
+							5) any object will disappear if its HP becomes ZERO.\
+ 	2) reason\
+	The reason I introduce the HP concept in this game, is that it can be found in many games, and the effect is quite related to the really world, since every object has its life-time(Heath Point here).\
+\
+4. Starting the Game\
+	1)in this game, every model has a delegate, which is the view controller of the model's view. By using a NSTimer, after a small period of time, the location of each object will change and it will ask its delegate to\
+	   update the view position in the game. The design of the game is following the MVC pattern in PS4, by making each object becomes a rectangle in the world.\
+           2)pros : the pattern is simple. Hence it's easy to implement and it's easy to debug comparing to the multi-threads programming.\
+	3) cons: sometimes the game runs slowly because of the limitation of iPad. Nowadays, iPad uses multi-core already, hence the game will perform better if using multi-threads programming here.\
+\
+\
+5) Testing\
+ 	Black Box Testing:\
+	a)	put one straw in the game area, and one pig. \
+		start game.\
+		choose the power and direction.\
+		\
+		Branch 1): try to shoot the pig correctly at first time, pig dies!\
+		Branch 2): try to shoot the pig without aiming at it for three times, wolf dies.\
+	b) 	load Level 1 to play\
+			1) try to aim at the pig\
+			2) not to aim at the pig	\
+	c) 	load Level 2 to play\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 			1) try to aim at the pig\
+			2) not to aim at the pig	\
+	d) 	load Level 3 to play\
+			1) try to aim at the pig\
+			2) not to aim at the pig	\
+\
+	e) 	stop the game when playing and start again\
+	\
+	f)	load from savings to play\
+													g)	choose blue projectile after starting the game\
+		shoot the projectile to see if it collide with other objects correctly, and be removed after being chosen\
+\
+		choose red projectile after starting the game\
+		shoot the projectile to see if it collide with other objects correctly, and be removed after being chosen\
+\
+		choose green projectile after starting the game\
+		shoot the projectile to see if it collide with other objects correctly, and be removed after being chosen\
+	\
+	h) shoot at the ground to see whether the projectile disappear\
+\
+	i) shoot two irons to see the projectile disappear after first colliding.\
+\
+	Glass Box testing\
+	 	hard to glass box testing, since can only see the ui and hard to compute the correct number.\
+		only assert at some place to make sure the objects are initiated correctly.\
+\
+6)The bells & whistles\
+	Improvement: 1) the wolf only has three lives. His lives decreases after a shoot. A user can see its HP by counting the number of hearts below it.\
+			  2) the wolf will show a death animation if he cannot kill the pig after 3 times/\
+			  3) A USER  can choose the color of the projectile at the right top corner in the game after the game starts. And each colorful projectile can only be used once, it will disappear and be ready by a single tap.\
+			  4) A user can see a wolf sucks the air before shooting.\
+			  5) A pig shows a death animation after be shoot, and a smoke animation.\
+			  6) A congratulation message will be shown to a user when he wins.\
+			  7) A comfort message will be shown to a user when he loses the game.\
+			  8) A user can DIY his own level or choose three set levels for him.\
+\
+Final Reflection:\
+	1) over 40 hours\
+	2) have a better MVC pattern in ps3. change a lot codes.\
+	3) so far so good\
+	4) the structure is effective, I think. But the mvc pattern is not obvious in ps3, but quite obvious in ps4. Maybe can make ps4 first then ps3.\
+\
+				}

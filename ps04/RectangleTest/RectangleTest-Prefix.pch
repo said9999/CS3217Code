@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'RectangleTest' target in the 'RectangleTest' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

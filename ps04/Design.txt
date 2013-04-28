@@ -1,0 +1,31 @@
+MatrixNo: A0091657w
+Name: Jiang Yaoxuan
+1.Design :	The design of this physical engine is using MVC pattern.	M: World and Models(rectangles)	V: StoryBoard	C: ViewController and RectangleViewController	Each rectangle is controlled by an rectangleViewController. Its delegate is RectangleViewController, which means when the model is modified, the view will be 	modified as well.	
+	RectangleViewController is added into ViewController. Both of them know the information about models and StoryBoard. They keep updating models and their views 	since the world start running.	
+	The world knows nothing about UI information. It only stores the information of models(rectangles) here. And it has a method called "run" to start simulating the 	real world.	
+	A CollisionDetector is inside the world. It continues tracking every collision in this world and stores all contact points into its contactPointsList.	
+	A ContactPoint knows all information of two colliding rectangles. Hence, it will apply the impulse on these two rectangles, after all contact points are added into 	the contactPointsList.
+
+
+2.How to extend
+	We can create a new object model, and inherit all other shapes to this model. Each	model has a tag called “shape”, then we can identify each object by this tag.
+
+3.Testing Strategy
+
+	Black-box Test:
+		1.add one object, see it falls down.
+		2.add a bottom, see two object colliding.
+		3.add two objects and one bottom, see three objects colliding.
+		4.add all bounds, add 6 rectangles, to see colliding.
+
+	Glass-box Test:
+		PLS cancel all statement related to uiaccelerometer first!!!!
+		Write down 3 unit tests in the project. 
+
+
+4. Bonus Question
+	1. over 50+ hours
+	2. communicate with friends more, and reading some design pattern books
+	3. maybe provide some hints how to debug this project, since it's difficult for
+	 me to debug.
+
